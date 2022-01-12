@@ -10,7 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_11_064734) do
+ActiveRecord::Schema.define(version: 2022_01_12_124425) do
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.integer "name", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.integer "name", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shop_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "shop_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "genru_id"
+    t.integer "prefecture_id"
+    t.string "name"
+    t.string "image"
+    t.string "overview"
+    t.float "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,7 +59,7 @@ ActiveRecord::Schema.define(version: 2022_01_11_064734) do
     t.datetime "remember_created_at"
     t.string "name", null: false
     t.text "introduction"
-    t.string "profile_image"
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

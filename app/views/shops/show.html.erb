@@ -1,0 +1,41 @@
+<div class='container px-5 px-sm-0'>
+   <div class='row'>
+    <div class='col-md-3'>
+      <h2>User info</h2>
+      <%= render 'users/info', user: @user %>
+      <h2 class="mt-3">New book</h2>
+      <%= render 'form', shop: @shop_new %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>shop detail</h2>
+  		<table class='table'>
+  		  <tr>
+		      <%= link_to user_path(@shop.user) do %>
+            <td>
+            <%= attachment_image_tag(@shop.user, :profile_image, :fill, 60, 60, fallback: "no-image-icon.jpg") %><br>
+            <%= @shop.user.name %>
+            </td>
+          <% end %>
+          <td><%= link_to @shop.name, shop_path(@shop) %></td>
+          <td><%= @book.overview %></td>
+          <td id="favorite_buttons_<%= @shop.id%>">
+            <%= render "favorites/favorites", shop: @shop %>
+          </td>
+          <td>コメント数:<%= @shop.shop_comments.count %></td>
+          <% if @user == current_user  %>
+            <td><%= link_to 'Edit', edit_shop_path(@shop), class: "btn btn-sm btn-success edit_book_#{@shop.id}" %></td>
+            <td><%= link_to 'Destroy', shop_path(@shop), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@shop.id}"%></td>
+          <%end%>
+        </tr>
+      </table>
+      <table>
+        <div id = "comments_area">
+          <%= render "shop_comments/shop_comment",shop: @shop %>
+        </div>
+      </table>
+      <div class="new-comment">
+        <%= render "shop_comments/form" ,shop: @shop, shop_comment: @shop_comment %>
+      </div>
+    </div>
+  </div>
+</div>
