@@ -17,7 +17,7 @@
             </td>
           <% end %>
           <td><%= link_to @shop.name, shop_path(@shop) %></td>
-          <td><%= @book.overview %></td>
+          <td><%= @shop.overview %></td>
           <td id="favorite_buttons_<%= @shop.id%>">
             <%= render "favorites/favorites", shop: @shop %>
           </td>

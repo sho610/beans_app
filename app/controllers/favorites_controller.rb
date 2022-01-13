@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
   def create
-    @shop =Shop.find(params[:book_id])
+    @shop =Shop.find(params[:shop_id])
     favorite = current_user.favorites.new(shop_id: @shop.id)
     favorite.save
     # redirect_to request.referer

@@ -1,0 +1,16 @@
+<% shop.shop_comments.each do |shop_comment|%>
+  <tr>
+    <td>
+      <p>
+        <%= attachment_image_tag(shop.user, :profile_image, :fill, 60, 60, fallback: "no-image-icon.jpg") %>
+      </p>
+      <%= shop_comment.user.name %>
+    </td>
+    <td><%= shop_comment.comment %></td>
+    <% if shop_comment.user == current_user %>
+    <td>
+      <%= link_to "Delete",shop_shop_comment_path(shop_comment.shop,shop_comment),method: :delete,remote: true %>
+    </td>
+    <%end%>
+  </tr>
+<%end%>

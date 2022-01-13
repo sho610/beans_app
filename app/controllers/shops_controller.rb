@@ -25,12 +25,25 @@ class ShopsController < ApplicationController
   end
 
   def edit
+    @shop = Shop.find(params[:id])
+    if @shop.user != current_user
+      redirect_to shops_path
+    end
   end
 
   def update
+    @shop = Shop.find(params[:id])
+    if @shop.update(shop_params)
+      redirect_to shop_path(@shop), notice: "You have updated book successfully."
+    else
+      render "edit"
+    end
   end
 
   def destroy
+    @shop = Shop.find(params[:id])
+    @shop.destroy
+    redirect_to shops_path
   end
 
   private
