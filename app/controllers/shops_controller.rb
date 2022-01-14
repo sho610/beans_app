@@ -4,6 +4,8 @@ class ShopsController < ApplicationController
     @shops = Shop.all
     @shop_new =Shop.new
     @user = current_user
+    # @shop = Shop.find(params[:id])
+    @prefecture = Prefecture.new
   end
 
   def show

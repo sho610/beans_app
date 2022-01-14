@@ -2,8 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   get "home/about" => "homes#about"
+  get "/search", to: 'searchs#search'
+  get "/prefectures", to: "prefectures#new"
+  post "/prefectures", to: "prefectures#create"
+
 
   resources :users, only: [:show,:index,:edit,:update]
+
 
   resources :shops do
     resources :favorites , only:[:create ,:destroy]
