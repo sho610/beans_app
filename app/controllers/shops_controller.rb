@@ -5,7 +5,7 @@ class ShopsController < ApplicationController
     @shop_new =Shop.new
     @user = current_user
     # @shop = Shop.find(params[:id])
-    @prefecture = Prefecture.new
+    @shop_new.build_prefecture
   end
 
   def show
@@ -51,6 +51,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :image, :overview, :rate)
+    params.require(:shop).permit(:name, :image, :overview, :rate, prefecture_attributes: [:id,:name])
   end
 end

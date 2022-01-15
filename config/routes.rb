@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get "home/about" => "homes#about"
   get "/search", to: 'searchs#search'
-  get "/prefectures", to: "prefectures#new"
+  get "/prefectures/new", to: "prefectures#new"
+  get "/prefectures" , to: "prefectures#index"
   post "/prefectures", to: "prefectures#create"
 
 
