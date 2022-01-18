@@ -5,7 +5,7 @@ class ShopsController < ApplicationController
     @shop_new =Shop.new
     @user = current_user
     # @shop = Shop.find(params[:id])
-    @shop_new.build_prefecture
+    @prefecture = @shop_new.build_prefecture
   end
 
   def show
@@ -13,10 +13,12 @@ class ShopsController < ApplicationController
     @shop= Shop.find(params[:id])
     @user = @shop.user
     @shop_comment =ShopComment.new
+    @prefecture = @shop_new.build_prefecture
   end
 
   def create
     @shop = Shop.new(shop_params)
+    @user = current_user
     @shop.user_id = current_user.id
     if @shop.save
       redirect_to shop_path(@shop), notice: "You have created book successfully."
@@ -36,9 +38,11 @@ class ShopsController < ApplicationController
   def update
     @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
+
       redirect_to shop_path(@shop), notice: "You have updated book successfully."
     else
       render "edit"
+      byebug
     end
   end
 

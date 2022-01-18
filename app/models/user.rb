@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :shops , dependent: :destroy
-  has_many :prefecture , dependent: :destroy
+  has_many :prefectures , dependent: :destroy
   has_many :shop_comments, dependent: :destroy
   has_many :favorites , dependent: :destroy
 

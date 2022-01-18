@@ -1,11 +1,11 @@
 <%= form_with model:shop,local:true do |f| %>
   <div class="form-group">
     <%= f.label :"ショップ" %>
-    <%= f.text_field :name, class: 'form-control book_title' %>
+    <%= f.text_field :name, class: 'form-control shop_name' %>
   </div>
   <div class="form-group">
     <%= f.label :"概要" %>
-    <%= f.text_area :overview, class: 'form-control book_body' %>
+    <%= f.text_area :overview, class: 'form-control shop_overview' %>
   </div>
   <div class = "form_group" >
     <%= f.fields_for :prefecture do |pre| %>
