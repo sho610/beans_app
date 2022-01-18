@@ -8,6 +8,12 @@
     <%= f.text_area :overview, class: 'form-control shop_overview' %>
   </div>
   <div class = "form_group" >
+    <%= f.fields_for :genre do |gen| %>
+      <%= gen.label :ジャンル選択 %><br>
+      <%= gen.select :name, Genre.names.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
+    <% end %>
+  </dev>
+  <div class = "form_group" >
     <%= f.fields_for :prefecture do |pre| %>
       <%= pre.hidden_field :user_id, value: current_user.id %>
       <%= pre.label :地域選択 %><br>

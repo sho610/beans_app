@@ -2,7 +2,7 @@ class Prefecture < ApplicationRecord
 
   # has_many :shops , dependent: :destroy
   belongs_to :shop
-  belongs_to :user
+  # belongs_to :user
 
 
   enum name:{

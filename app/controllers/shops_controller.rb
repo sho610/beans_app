@@ -6,6 +6,7 @@ class ShopsController < ApplicationController
     @user = current_user
     # @shop = Shop.find(params[:id])
     @prefecture = @shop_new.build_prefecture
+    @genre = @shop_new.build_genre
   end
 
   def show
@@ -14,16 +15,19 @@ class ShopsController < ApplicationController
     @user = @shop.user
     @shop_comment =ShopComment.new
     @prefecture = @shop_new.build_prefecture
+    @genre = @shop_new.build_genre
   end
 
   def create
     @shop = Shop.new(shop_params)
     @user = current_user
     @shop.user_id = current_user.id
-    if @shop.save
+    if @shop.save!
       redirect_to shop_path(@shop), notice: "You have created book successfully."
     else
       @shops = Shop.all
+      @prefecture = @shops.prefecture
+      @genre = @shops.genre
       render 'index'
     end
   end
@@ -55,6 +59,8 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :image, :overview, :rate, prefecture_attributes: [:id,:name])
+    params.require(:shop).permit(:name, :image, :overview, :rate,
+                                  prefecture_attributes: [:id,:name],
+                                  genre_attributes: [:id,:name]).merge(user_id: current_user.id)
   end
 end

@@ -1,6 +1,6 @@
 class Genre < ApplicationRecord
 
-  has_many :shops
+  belongs_to :shop
 
   enum name:{深煎り:1 ,浅煎り:2}
 
