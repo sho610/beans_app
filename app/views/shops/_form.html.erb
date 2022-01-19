@@ -1,3 +1,4 @@
+
 <%= form_with model:shop,local:true do |f| %>
   <div class="form-group">
     <%= f.label :"ショップ" %>
@@ -7,13 +8,13 @@
     <%= f.label :"概要" %>
     <%= f.text_area :overview, class: 'form-control shop_overview' %>
   </div>
-  <div class = "form_group" >
+  <div class="form-group" >
     <%= f.fields_for :genre do |gen| %>
       <%= gen.label :ジャンル選択 %><br>
       <%= gen.select :name, Genre.names.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
     <% end %>
-  </dev>
-  <div class = "form_group" >
+  </div>
+  <div class="form-group" >
     <%= f.fields_for :prefecture do |pre| %>
       <%= pre.hidden_field :user_id, value: current_user.id %>
       <%= pre.label :地域選択 %><br>
@@ -23,5 +24,4 @@
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
   </div>
-  <!--<#%= render "prefectures/form" , prefecture: @prefecture%>-->
 <% end %>
