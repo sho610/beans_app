@@ -1,9 +1,11 @@
 <table class='table table-hover table-inverse'>
   <thead>
     <tr>
-      <th></th>
+      <th>User</th>
       <th>Title</th>
       <th>Opinion</th>
+      <th>Genre</th>
+      <th>Prefecture</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,7 +18,16 @@
         </td>
         <td><%= link_to shop.name, shop_path(shop), class: "shop_#{shop.id}" %></td>
         <td><%= shop.overview %></td>
-        <td><%= prefecture.name %></td>
+        <td>
+          <% shop.genres.each do |genre| %>
+            <%= genre.name %>
+          <% end %>
+        </td>
+        <td>
+          <% shop.prefectures.each do |prefecture| %>
+            <%= prefecture.name %>
+          <% end %>
+        </td>
     <% end %>
   </tbody>
 </table>

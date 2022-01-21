@@ -5,8 +5,8 @@ class ShopsController < ApplicationController
     @shop_new =Shop.new
     @user = current_user
     # @shop = Shop.find(params[:id])
-    @prefecture = @shop_new.build_prefecture
-    @genre = @shop_new.build_genre
+    @prefecture = @shop_new.prefectures.new
+    @genre = @shop_new.genres.new
   end
 
   def show
@@ -14,8 +14,8 @@ class ShopsController < ApplicationController
     @shop= Shop.find(params[:id])
     @user = @shop.user
     @shop_comment =ShopComment.new
-    @prefecture = @shop_new.build_prefecture
-    @genre = @shop_new.build_genre
+    @prefecture = @shop_new.prefectures.new
+    @genre = @shop_new.genres.new
   end
 
   def create
@@ -59,8 +59,6 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :image, :overview, :rate,
-                                  prefecture_attributes: [:id,:name],
-                                  genre_attributes: [:id,:name]).merge(user_id: current_user.id)
+    params.require(:shop).permit(:name, :image, :overview, :rate, genres_attributes: [:id, :name, :shop_id], prefectures_attributes: [:id, :name, :shop_id])
   end
 end

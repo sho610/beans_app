@@ -15,13 +15,21 @@
   		  <tr>
 		      <%= link_to user_path(@shop.user) do %>
             <td>
-            <%= attachment_image_tag(@shop.user, :profile_image, :fill, 60, 60, fallback: "no-image-icon.jpg") %><br>
-            <%= @shop.user.name %>
+            <%= attachment_image_tag @shop, :image, :fill, 60, 60, fallback: "no-image-icon.jpg" %>
             </td>
           <% end %>
           <td><%= link_to @shop.name, shop_path(@shop) %></td>
           <td><%= @shop.overview %></td>
-          <td><%= @prefecture.name %></td>
+          <td>
+          <% @shop.genres.each do |genre| %>
+            <%= genre.name %>
+          <% end %>
+        </td>
+        <td>
+          <% @shop.prefectures.each do |prefecture| %>
+            <%= prefecture.name %>
+          <% end %>
+        </td>
           <td id="favorite_buttons_<%= @shop.id%>">
             <%= render "favorites/favorites", shop: @shop %>
           </td>

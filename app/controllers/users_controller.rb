@@ -5,15 +5,15 @@ class UsersController < ApplicationController
     @shops = @user.shops
     @shop = Shop.new
     @users = User.all
-    @prefecture =@shop.build_prefecture
-    @genre = @shop.build_genre
+    @prefecture =@shop.prefectures.new
+    @genre = @shop.genres.new
   end
 
   def index
     @users = User.all
     @shop = Shop.new
-    @prefecture =@shop.build_prefecture
-    @genre = @shop.build_genre
+    @prefecture =@shop.prefectures.new
+    @genre = @shop.genres.new
   end
 
   def edit
