@@ -35,7 +35,12 @@
               <td>コメント数:<%= @shop.shop_comments.count %></td>
               <td>
                 <%# rateを表示 %>
-                <div class="review-rating" data-score="<%= @shop.rate %>">評価：</div>
+                <!--<div class="review-rating" data-score="<#%= @shop.rate %>">評価：</div>-->
+                <div class="star-group">
+                  <div class="detail-review">評価</div>
+                  <div class="detail-value", id="star-comf-<%= @shop.id %>"></div> <%# id要素の書き方がポイント %>
+                  <div class="eval-star"><%= @shop.rate %>/5点</div> <%# @モデル.カラムで保存された数値を表示 %>
+                </div>
               </td>
               <% if @user == current_user  %>
                 <td><%= link_to 'Edit', edit_shop_path(@shop), class: "btn btn-sm btn-success edit_book_#{@shop.id}" %></td>
@@ -48,6 +53,19 @@
           <!--<div class="new-comment">-->
           <!--  <#%= render "shop_comments/form" ,shop: @shop, shop_comment: @shop_comment %>-->
           <!--</div>-->
+
+
+          <script>
+            $('#star-comf-<%= @shop.id %>').raty({      //.idでどの評価であるかを取得
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,                             //readOnlyオプションで読み込み専用とする。編集できない。
+              score: <%= @shop.rate %>,              //scoreオプションで評価内容を取得
+            });
+          </script>
           </div>
         </div>
       </div>
