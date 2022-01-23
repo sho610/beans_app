@@ -11,42 +11,45 @@
     </div>
     <div class='col-md-8 offset-md-1'>
   		<h2>shop detail</h2>
-  		<table class='table'>
-  		  <tr>
-		      <%= link_to user_path(@shop.user) do %>
-            <td>
-            <%= attachment_image_tag @shop, :image, :fill, 60, 60, fallback: "no-image-icon.jpg" %>
+  		<div class='d-flex justify-content-center card w-50'>
+            <%= attachment_image_tag @shop, :image, :fill, 60, 60, fallback: "no-image-icon.jpg",class:"card-img-top"; %>
+        <div class="card-body">
+          <div class="card-title">
+            <%= link_to @shop.name, shop_path(@shop) %>
+          </div>
+          <div class="card-text">
+              <td><%= @shop.overview %></td>
+              <td>
+              <% @shop.genres.each do |genre| %>
+                <%= genre.name %>
+              <% end %>
             </td>
-          <% end %>
-          <td><%= link_to @shop.name, shop_path(@shop) %></td>
-          <td><%= @shop.overview %></td>
-          <td>
-          <% @shop.genres.each do |genre| %>
-            <%= genre.name %>
-          <% end %>
-        </td>
-        <td>
-          <% @shop.prefectures.each do |prefecture| %>
-            <%= prefecture.name %>
-          <% end %>
-        </td>
-          <td id="favorite_buttons_<%= @shop.id%>">
-            <%= render "favorites/favorites", shop: @shop %>
-          </td>
-          <td>コメント数:<%= @shop.shop_comments.count %></td>
-          <% if @user == current_user  %>
-            <td><%= link_to 'Edit', edit_shop_path(@shop), class: "btn btn-sm btn-success edit_book_#{@shop.id}" %></td>
-            <td><%= link_to 'Destroy', shop_path(@shop), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@shop.id}"%></td>
-          <%end%>
-        </tr>
-      </table>
-      <table>
-        <div id = "comments_area">
-          <%= render "shop_comments/shop_comment",shop: @shop %>
+            <td>
+              <% @shop.prefectures.each do |prefecture| %>
+                <%= prefecture.name %>
+              <% end %>
+            </td>
+              <td id="favorite_buttons_<%= @shop.id%>">
+                <%= render "favorites/favorites", shop: @shop %>
+              </td>
+              <td>コメント数:<%= @shop.shop_comments.count %></td>
+              <td>
+                <%# rateを表示 %>
+                <div class="review-rating" data-score="<%= @shop.rate %>">評価：</div>
+              </td>
+              <% if @user == current_user  %>
+                <td><%= link_to 'Edit', edit_shop_path(@shop), class: "btn btn-sm btn-success edit_book_#{@shop.id}" %></td>
+                <td><%= link_to 'Destroy', shop_path(@shop), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@shop.id}"%></td>
+              <%end%>
+
+          <!--  <div id = "comments_area">-->
+          <!--    <#%= render "shop_comments/shop_comment",shop: @shop %>-->
+          <!--  </div>-->
+          <!--<div class="new-comment">-->
+          <!--  <#%= render "shop_comments/form" ,shop: @shop, shop_comment: @shop_comment %>-->
+          <!--</div>-->
+          </div>
         </div>
-      </table>
-      <div class="new-comment">
-        <%= render "shop_comments/form" ,shop: @shop, shop_comment: @shop_comment %>
       </div>
     </div>
   </div>

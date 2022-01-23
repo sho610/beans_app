@@ -12,5 +12,6 @@
 <% if user == current_user %>
   <div class='row'>
     <%= link_to '',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog edit_user_#{user.id}" %>
+    <%= link_to "新規投稿",new_shop_path ,class: "btn btn-outline-secondary btn-block"%>
   </div>
 <% end %>

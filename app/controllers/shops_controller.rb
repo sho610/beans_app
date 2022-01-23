@@ -1,5 +1,13 @@
 class ShopsController < ApplicationController
 
+  def new
+    @shop_new =Shop.new
+    @user = current_user
+    # @shop = Shop.find(params[:id])
+    @prefecture = @shop_new.prefectures.new
+    @genre = @shop_new.genres.new
+  end
+  
   def index
     @shops = Shop.all
     @shop_new =Shop.new
