@@ -9,7 +9,9 @@ class Shop < ApplicationRecord
   accepts_nested_attributes_for :prefectures , :genres
 
   attachment :image, destroy: false
-
+  
+  validates :name, presence: true
+  validates :overview, presence: true
   validates :rate, numericality: {
     less_than_or_equal_to: 5,
     greater_than_or_equal_to: 1}, presence: true

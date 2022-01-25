@@ -1,6 +1,6 @@
 <div class = "container">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="col-md-12 col-md-offset-1">
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -9,16 +9,23 @@
         </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <!--<img class="d-block w-100" src="/assets/image1.jpg" alt="First slide">-->
-              <%= attachment_image_tag @random.first, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
+              <%= attachment_image_tag @shop_rank.first, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
+              <div class="carousel-caption">
+                <h5>ランキング1位</h5>
+                <p><%= link_to @shop_rank.shop.name, shop_path(@shop)></p>
+              </div>
             </div>
             <div class="carousel-item">
-              <%= attachment_image_tag @random.second, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
-          <!--    <img class="d-block w-100" src="/assets/image2.jpg" alt="Second slide">-->
+              <%= attachment_image_tag @shop_rank.second, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
+              <div class="carousel-caption">
+                <h5>ランキング2位</h5>
+              </div>
             </div>
             <div class="carousel-item">
-              <%= attachment_image_tag @random.third, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
-          <!--    <img class="d-block w-100" src="/assets/image3.jpg" alt="Third slide">-->
+              <%= attachment_image_tag @shop_rank.third, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
+              <div class="carousel-caption">
+                <h5>ランキング3位</h5>
+              </div>
             </div>
           </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
