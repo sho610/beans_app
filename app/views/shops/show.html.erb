@@ -20,15 +20,15 @@
                 <div>opnion:<%= @shop.overview %></div>
                 <div>
                 genre:
-                <% @shop.genres.each do |genre| %>
-                  <%= genre.name %>
-                <% end %>
+                <%# @shop.genres.each do |genre| %>
+                  <%= @shop.genre %>
+                <%# end %>
               </div>
               <div>
                 prefecture:
-                <% @shop.prefectures.each do |prefecture| %>
-                  <%= prefecture.name %>
-                <% end %>
+                <%# @shop.prefectures.each do |prefecture| %>
+                  <%= @shop.prefecture %>
+                <%# end %>
               </div>
               <div id="favorite_buttons_<%= @shop.id%>">
                 <%= render "favorites/favorites", shop: @shop %>

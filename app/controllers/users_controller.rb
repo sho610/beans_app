@@ -2,17 +2,17 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @shops = @user.shops
-    @shop = Shop.new
-    @users = User.all
-    @prefecture = @shop.prefectures.new
-    @genre = @shop.genres.new
+    # @shop = Shop.new
+    # @users = User.all
+    # @prefecture = @shop.prefectures.new
+    # @genre = @shop.genres.new
   end
 
   def index
     @users = User.all
-    @shop = Shop.new
-    @prefecture = @shop.prefectures.new
-    @genre = @shop.genres.new
+    # @shop = Shop.new
+    # @prefecture = @shop.prefectures.new
+    # @genre = @shop.genres.new
   end
 
   def edit

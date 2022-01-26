@@ -3,8 +3,8 @@ class ShopsController < ApplicationController
     @shop_new = Shop.new
     @user = current_user
     # @shop = Shop.find(params[:id])
-    @prefecture = @shop_new.prefectures.new
-    @genre = @shop_new.genres.new
+    # @prefecture = @shop_new.prefectures.new
+    # @genre = @shop_new.genres.new
   end
 
   def index
@@ -12,8 +12,10 @@ class ShopsController < ApplicationController
     @shop_new = Shop.new
     @user = current_user
     # @shop = Shop.find(params[:id])
-    @prefecture = @shop_new.prefectures.new
-    @genre = @shop_new.genres.new
+    # @prefecture = @shop_new.prefectures.new
+    # @genre = @shop_new.genres.new
+    # @search = Shop.ransack(params[:q])
+    # @search_shops = @search.result
   end
 
   def show
@@ -21,8 +23,8 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @user = @shop.user
     @shop_comment = ShopComment.new
-    @prefecture = @shop_new.prefectures.new
-    @genre = @shop_new.genres.new
+    # @prefecture = @shop_new.prefectures.new
+    # @genre = @shop_new.genres.new
   end
 
   def create
@@ -51,7 +53,7 @@ class ShopsController < ApplicationController
       redirect_to shop_path(@shop), notice: 'You have updated book successfully.'
     else
       render 'edit'
-      byebug
+      # byebug
     end
   end
 
@@ -64,7 +66,7 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :image, :overview, :rate, genres_attributes: %i[id name shop_id],
-                                                                  prefectures_attributes: %i[id name shop_id])
+    params.require(:shop).permit(:name, :image, :overview, :rate, :genre, :prefecture) #genres_attributes: %i[id name shop_id],
+                                                                  #prefectures_attributes: %i[id name shop_id])
   end
 end
