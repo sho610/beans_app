@@ -5,10 +5,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :shops , dependent: :destroy
+  has_many :shops, dependent: :destroy
   # has_many :prefectures , dependent: :destroy
   has_many :shop_comments, dependent: :destroy
-  has_many :favorites , dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   attachment :profile_image, destroy: false
+
+  validates :name, :email, presence: true
 end

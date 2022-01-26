@@ -12,19 +12,21 @@
               <%= attachment_image_tag @shop_rank.first, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
               <div class="carousel-caption">
                 <h5>ランキング1位</h5>
-                <p><%= link_to @shop_rank.shop.name, shop_path(@shop)></p>
+                <p><%= link_to @shop_rank.first.name, shop_path(@shop_rank.first) %></p>
               </div>
             </div>
             <div class="carousel-item">
               <%= attachment_image_tag @shop_rank.second, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
               <div class="carousel-caption">
                 <h5>ランキング2位</h5>
+                <p><%= link_to @shop_rank.second.name, shop_path(@shop_rank.second) %></p>
               </div>
             </div>
             <div class="carousel-item">
               <%= attachment_image_tag @shop_rank.third, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
               <div class="carousel-caption">
                 <h5>ランキング3位</h5>
+                <p><%= link_to @shop_rank.third.name, shop_path(@shop_rank.third) %></p>
               </div>
             </div>
           </div>

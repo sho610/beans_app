@@ -1,4 +1,4 @@
-<div class ="container">
+<div class ="container mt-3 mb-3">
   <%= render 'searchs/form'%>
 </div>
 <div class='container px-5 px-sm-0'>
@@ -9,37 +9,40 @@
       </div>
       <div class='col-md-6 offset-md-1 '>
     		<h2>shop detail</h2>
-    		<div class='d-flex justify-content-center card w-50'>
-              <%= attachment_image_tag @shop, :image, :fill, 60, 60, fallback: "no-image-icon.jpg",class:"card-img-top"; %>
+    		<div class='d-flex justify-content-center card border-dark'>
+              <%= attachment_image_tag @shop, :image, :fill, 60, 60, fallback: "no-image-icon.jpg",class:"card-img-top" %>
           <div class="card-body">
             <div class="card-title">
+              shop_name:
               <%= link_to @shop.name, shop_path(@shop) %>
             </div>
             <div class="card-text">
-                <div><%= @shop.overview %></div>
+                <div>opnion:<%= @shop.overview %></div>
                 <div>
+                genre:
                 <% @shop.genres.each do |genre| %>
                   <%= genre.name %>
                 <% end %>
               </div>
               <div>
+                prefecture:
                 <% @shop.prefectures.each do |prefecture| %>
                   <%= prefecture.name %>
                 <% end %>
               </div>
-                <div id="favorite_buttons_<%= @shop.id%>">
-                  <%= render "favorites/favorites", shop: @shop %>
+              <div id="favorite_buttons_<%= @shop.id%>">
+                <%= render "favorites/favorites", shop: @shop %>
+              </div>
+              <div>コメント数:<%= @shop.shop_comments.count %></div>
+              <div>
+                <%# rateを表示 %>
+                <!--<div class="review-rating" data-score="<#%= @shop.rate %>">評価：</div>-->
+                <div class="star-group">
+                  <div class="detail-review">評価</div>
+                  <div class="detail-value", id="star-comf-<%= @shop.id %>"></div> <%# id要素の書き方がポイント %>
+                  <div class="eval-star"><%= @shop.rate %>/5点</div> <%# @モデル.カラムで保存された数値を表示 %>
                 </div>
-                <div>コメント数:<%= @shop.shop_comments.count %></div>
-                <div>
-                  <%# rateを表示 %>
-                  <!--<div class="review-rating" data-score="<#%= @shop.rate %>">評価：</div>-->
-                  <div class="star-group">
-                    <div class="detail-review">評価</div>
-                    <div class="detail-value", id="star-comf-<%= @shop.id %>"></div> <%# id要素の書き方がポイント %>
-                    <div class="eval-star"><%= @shop.rate %>/5点</div> <%# @モデル.カラムで保存された数値を表示 %>
-                  </div>
-                </div>
+              </div>
                 <% if @user == current_user  %>
                   <div><%= link_to 'Edit', edit_shop_path(@shop), class: "btn btn-sm btn-success edit_book_#{@shop.id}" %></div>
                   <div><%= link_to 'Destroy', shop_path(@shop), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@shop.id}"%></div>

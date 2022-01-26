@@ -1,5 +1,4 @@
 class PrefecturesController < ApplicationController
-
   def new
     @prefecture = Prefecture.new
   end
@@ -19,5 +18,4 @@ class PrefecturesController < ApplicationController
   def prefecture_params
     params.require(:prefecture).permit(:name)
   end
-
 end

@@ -1,16 +1,15 @@
 class ShopsController < ApplicationController
-
   def new
-    @shop_new =Shop.new
+    @shop_new = Shop.new
     @user = current_user
     # @shop = Shop.find(params[:id])
     @prefecture = @shop_new.prefectures.new
     @genre = @shop_new.genres.new
   end
-  
+
   def index
     @shops = Shop.all
-    @shop_new =Shop.new
+    @shop_new = Shop.new
     @user = current_user
     # @shop = Shop.find(params[:id])
     @prefecture = @shop_new.prefectures.new
@@ -19,9 +18,9 @@ class ShopsController < ApplicationController
 
   def show
     @shop_new = Shop.new
-    @shop= Shop.find(params[:id])
+    @shop = Shop.find(params[:id])
     @user = @shop.user
-    @shop_comment =ShopComment.new
+    @shop_comment = ShopComment.new
     @prefecture = @shop_new.prefectures.new
     @genre = @shop_new.genres.new
   end
@@ -31,7 +30,7 @@ class ShopsController < ApplicationController
     @user = current_user
     @shop.user_id = current_user.id
     if @shop.save!
-      redirect_to shop_path(@shop), notice: "You have created book successfully."
+      redirect_to shop_path(@shop), notice: 'You have created book successfully.'
     else
       @shops = Shop.all
       @prefecture = @shops.prefecture
@@ -42,18 +41,16 @@ class ShopsController < ApplicationController
 
   def edit
     @shop = Shop.find(params[:id])
-    if @shop.user != current_user
-      redirect_to shops_path
-    end
+    redirect_to shops_path if @shop.user != current_user
   end
 
   def update
     @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
 
-      redirect_to shop_path(@shop), notice: "You have updated book successfully."
+      redirect_to shop_path(@shop), notice: 'You have updated book successfully.'
     else
-      render "edit"
+      render 'edit'
       byebug
     end
   end
@@ -67,6 +64,7 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :image, :overview, :rate, genres_attributes: [:id, :name, :shop_id], prefectures_attributes: [:id, :name, :shop_id])
+    params.require(:shop).permit(:name, :image, :overview, :rate, genres_attributes: %i[id name shop_id],
+                                                                  prefectures_attributes: %i[id name shop_id])
   end
 end
