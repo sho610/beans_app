@@ -10,13 +10,16 @@
       </div>
     <!--</div>-->
     <!--<div class='row justify-content-center'>-->
-      <div class='col-md-8 offset-md-1 justify-content-center '>
-        <!--#error_message-->
-        <%= form_with model:@shop_new, local:true do |f|%>
-          <%= render 'layouts/error', model: f.object %>
-        <% end %>
-        <h2>Shops</h2>
-        <%= render 'index', shops: @shops %>
+      
+        <div class='col'>
+          <!--#error_message-->
+          <%= form_with model:@shop_new, local:true do |f|%>
+            <%= render 'layouts/error', model: f.object %>
+          <% end %>
+          <h2>Shops</h2>
+          <%= render 'index', shops: @shops %>
+        </div>
       </div>
-    </div>
-</div>
+    
+
+  </div>

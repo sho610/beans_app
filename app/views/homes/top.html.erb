@@ -12,22 +12,25 @@
             <div class="carousel-item active">
               <%= attachment_image_tag @shop_rank.first, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
               <div class="carousel-caption">
-                <h5>ランキング1位</h5>
-                <p><%= link_to @shop_rank.first.name, shop_path(@shop_rank.first) %></p>
+                <h2 class="text-warning bg-white">ランキング1位</h2>
+                <h3 class="text-dark bg-white">ShopName</h3>
+                <h3 class="bg-white"><%= link_to @shop_rank.first.name, shop_path(@shop_rank.first) %></h3>
               </div>
             </div>
             <div class="carousel-item">
               <%= attachment_image_tag @shop_rank.second, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
               <div class="carousel-caption">
-                <h5>ランキング2位</h5>
-                <p><%= link_to @shop_rank.second.name, shop_path(@shop_rank.second) %></p>
+                <h2 class="text-warning bg-white">ランキング2位</h2>
+                <h3 class="text-dark bg-white">ShopName</h3>
+                <h3 class="bg-white"><%= link_to @shop_rank.second.name, shop_path(@shop_rank.second) %></3>
               </div>
             </div>
             <div class="carousel-item">
               <%= attachment_image_tag @shop_rank.third, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
               <div class="carousel-caption">
-                <h5>ランキング3位</h5>
-                <p><%= link_to @shop_rank.third.name, shop_path(@shop_rank.third) %></p>
+                <h2 class="text-warning bg-white">>ランキング3位</h2>
+                <h3 class="text-dark bg-white">ShopName</3>
+                <h3 class="bg-white"><%= link_to @shop_rank.third.name, shop_path(@shop_rank.third) %></3>
               </div>
             </div>
           </div>
