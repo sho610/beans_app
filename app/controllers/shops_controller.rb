@@ -28,15 +28,16 @@ class ShopsController < ApplicationController
   end
 
   def create
-    @shop = Shop.new(shop_params)
+    @shop_new = Shop.new(shop_params)
     @user = current_user
-    @shop.user_id = current_user.id
-    if @shop.save!
-      redirect_to shop_path(@shop), notice: 'You have created book successfully.'
+    # @shop.user_id = current_user.id
+    if @shop_new.save
+      redirect_to shop_path(@shop_new), notice: 'You have created shop successfully.'
     else
       @shops = Shop.all
-      @prefecture = @shops.prefecture
-      @genre = @shops.genre
+      @user = current_user
+      # @prefecture = @shops.prefecture
+      # @genre = @shops.genre
       render 'index'
     end
   end
@@ -50,7 +51,7 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     if @shop.update(shop_params)
 
-      redirect_to shop_path(@shop), notice: 'You have updated book successfully.'
+      redirect_to shop_path(@shop), notice: 'You have updated shop successfully.'
     else
       render 'edit'
       # byebug

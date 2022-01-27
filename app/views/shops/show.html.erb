@@ -13,6 +13,8 @@
               <%= attachment_image_tag @shop, :image, :fill, 60, 60, fallback: "no-image-icon.jpg",class:"card-img-top" %>
           <div class="card-body">
             <div class="card-title">
+              User:
+              <%= link_to @user.name, user_path(@user) %><br/>
               shop_name:
               <%= link_to @shop.name, shop_path(@shop) %>
             </div>
