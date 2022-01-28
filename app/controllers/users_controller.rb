@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @shops = @user.shops
+    @shops = @user.shops.page(params[:page]).per(3)
     # @shop = Shop.new
     # @users = User.all
     # @prefecture = @shop.prefectures.new

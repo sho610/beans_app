@@ -1,4 +1,6 @@
 class ShopsController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @shop_new = Shop.new
     @user = current_user
@@ -8,7 +10,7 @@ class ShopsController < ApplicationController
   end
 
   def index
-    @shops = Shop.all
+    @shops = Shop.all.page(params[:page]).per(3)
     @shop_new = Shop.new
     @user = current_user
     # @shop = Shop.find(params[:id])
@@ -29,12 +31,12 @@ class ShopsController < ApplicationController
 
   def create
     @shop_new = Shop.new(shop_params)
-    @user = current_user
+    @shop_new.user = current_user
     # @shop.user_id = current_user.id
-    if @shop_new.save
+    if @shop_new.save!
       redirect_to shop_path(@shop_new), notice: 'You have created shop successfully.'
     else
-      @shops = Shop.all
+      @shops = Shop.all.page(params[:page]).per(3)
       @user = current_user
       # @prefecture = @shops.prefecture
       # @genre = @shops.genre

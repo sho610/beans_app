@@ -1,4 +1,5 @@
 class Shop < ApplicationRecord
+
   belongs_to :user
   # has_one :prefecture, dependent: :destroy
   # has_one :genre, dependent: :destroy
