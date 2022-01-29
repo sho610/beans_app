@@ -39,4 +39,4 @@ https://docs.google.com/spreadsheets/d/1foCwt7IEd-sdajajlOHBF_km7e9tabdbPQ7yQU1n
 - IDE：Cloud9
 
 ## 使用素材
-- 使用検討中です。
+- フリー画像　"https://o-dan.net/ja/"
