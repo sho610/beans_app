@@ -17,9 +17,7 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-        <% if @shop_rank.first.nil? && @shop_rank.second.nil? && @shop_rank.third.nil? %>
-          <%= image_tag "top_image.jpg" ,class:"top_image" %>
-        <% else %>
+        <% unless @shop_rank.first.blank? && @shop_rank.second.blank? && @shop_rank.third.blank? %>
           <div class="carousel-inner">
             <div class="carousel-item active">
               <%= attachment_image_tag @shop_rank.first, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
@@ -30,20 +28,29 @@
               </div>
             </div>
             <div class="carousel-item">
+              <% if  @shop_rank.second.nil? %>
+              <% else %>
               <%= attachment_image_tag @shop_rank.second, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
               <div class="carousel-caption">
                 <h2 class="text-warning bg-white">ランキング2位</h2>
                 <h3 class="text-dark bg-white">ShopName</h3>
+
                 <h3 class="bg-white"><%= link_to @shop_rank.second.name, shop_path(@shop_rank.second) %></3>
               </div>
+              <% end %>
             </div>
             <div class="carousel-item">
+                <%# binding.pry %>
+              <%if  @shop_rank.third.nil? %>
+              <% else%>
               <%= attachment_image_tag @shop_rank.third, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
               <div class="carousel-caption">
                 <h2 class="text-warning bg-white">>ランキング3位</h2>
                 <h3 class="text-dark bg-white">ShopName</3>
+                <if >
                 <h3 class="bg-white"><%= link_to @shop_rank.third.name, shop_path(@shop_rank.third) %></3>
               </div>
+              <% end %>
             </div>
           </div>
 
@@ -55,7 +62,8 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-
+        <% else %>
+         <%= image_tag "top_image.jpg" ,class:"top_image" %>
         <% end %>
       </div>
     </div>
