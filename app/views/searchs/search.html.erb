@@ -1,11 +1,12 @@
-<% if @model == 'user' %>
-  <h3>【Usersモデルの検索結果】検索ワード：<%= @content %></h3>
-  <%= render 'users/index', users: @records %>
-<% else %>
-  <h3>【Shopsモデルの検索結果】検索ワード：<%= @content %></h3>
-  <%= render 'shops/index', shops: @records %>
-<% end %>
-
+<div class="container mx-auto">
+  <% if @model == 'user' %>
+    <h3>【Usersモデルの検索結果】検索ワード：<%= @content %></h3>
+    <%= render 'users/index', users: @records %>
+  <% else %>
+    <h3>【Shopsモデルの検索結果】検索ワード：<%= @content %></h3>
+    <%= render 'shops/search_shop', shops: @records %>
+  <% end %>
+</div>
 
 <!--<#% if @search_shops %>-->
 <!--  <#%= render partial: 'shops/index', shops: @search_shops %>-->
