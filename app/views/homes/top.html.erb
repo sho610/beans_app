@@ -17,7 +17,9 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-        <% unless @shop_rank.first.blank? && @shop_rank.second.blank? && @shop_rank.third.blank? %>
+        <% if @shop_rank.first.nil? && @shop_rank.second.nil? && @shop_rank.third.nil? %>
+          <%= image_tag "top_image.jpg" ,class:"top_image" %>
+        <% else %>
           <div class="carousel-inner">
             <div class="carousel-item active">
               <%= attachment_image_tag @shop_rank.first, :image, :fill, 500, 600, fallback: "no-image-icon.jpg" , class: "d-block top_image mx-auto" %>
@@ -53,8 +55,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
-        <% else %>
-         <%= image_tag "top_image.jpg" ,class:"top_image" %>
+
         <% end %>
       </div>
     </div>
