@@ -19,23 +19,17 @@
                 <div>opnion:<%= @shop.overview %></div>
                 <div>
                 genre:
-                <%# @shop.genres.each do |genre| %>
                   <%= @shop.genre %>
-                <%# end %>
               </div>
               <div>
                 prefecture:
-                <%# @shop.prefectures.each do |prefecture| %>
                   <%= @shop.prefecture %>
-                <%# end %>
               </div>
               <div id="favorite_buttons_<%= @shop.id%>">
                 <%= render "favorites/favorites", shop: @shop %>
               </div>
               <div>コメント数:<%= @shop.shop_comments.count %></div>
               <div>
-                <%# rateを表示 %>
-                <!--<div class="review-rating" data-score="<#%= @shop.rate %>">評価：</div>-->
                 <div class="star-group">
                   <div class="detail-review">評価</div>
                   <div class="detail-value", id="star-comf-<%= @shop.id %>"></div> <%# id要素の書き方がポイント %>

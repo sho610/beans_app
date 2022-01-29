@@ -27,9 +27,5 @@ class SearchsController < ApplicationController
 
   end
 
-  # before_action :set_search
-  # def set_search
-  #   @search = Shop.ransack(params[:q])
-  #   @search_shops = @search.result
-  # end
+
 end

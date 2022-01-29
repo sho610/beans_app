@@ -1,14 +1,4 @@
 <div class ="text-center">
-
-<!--<#%= search_form_for @search, search_path do |f| %>-->
-<!--  <#%= f.text_field :name_cont, placeholder: 'ショップ名を入力...' %>-->
-<!--  <#%= f.submit ("検索する") %>-->
-<!--<#% end %>-->
-
-
-
-
-
   <% if user_signed_in? %>
       <%= form_tag(search_path, method: :get) do %>
         <%= text_field_tag 'content' %>

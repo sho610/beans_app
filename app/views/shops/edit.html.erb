@@ -2,7 +2,6 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
   		<h1>Editing shop</h1>
-    	<!--<#%= render 'layouts/errors', obj: @book %>-->
   		<%= render 'edit_form', shop: @shop %>
   		<%= link_to 'Show', shop_path(@shop), class: "shop_#{@shop.id}" %> |
   		<%= link_to 'Back', shop_path, class: "back" %>

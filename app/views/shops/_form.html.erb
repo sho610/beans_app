@@ -13,21 +13,15 @@
     <%= f.attachment_field :image ,class: "form-control-file shop_image" %>
   </div>
   <div class="form-group" >
-    <%#= f.fields_for :genres do |gen| %>
       <%= f.label :ジャンル選択 %><br>
       <%= f.select :genre, Shop.genres.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
-    <%# end %>
   </div>
   <div class="form-group" >
-    <%#= f.fields_for :prefectures do |pre| %>
-      <%#= pre.hidden_field :user_id, value: current_user.id %>
       <%= f.label :地域選択 %><br>
       <%= f.select :prefecture, Shop.prefectures.keys, {prompt: '選択してください'}, class: 'form-control btn btn-info' %>
-    <%# end %>
   </div>
   <div id="rating-form">
     <label>評価：</label>
-    <%# scoreNameの値をhidden_fieldでカラムに送っている %>
     <%= f.hidden_field :rate, :value => 'score' %>
   </div>
 
