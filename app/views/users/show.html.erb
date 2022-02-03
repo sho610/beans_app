@@ -1,11 +1,14 @@
-<div class='container px-5 px-sm-0'>
+<div class='container'>
   <div class='row'>
-    <div class='col-md-3'>
+    <div class='col-md-8 offset-md-2'>
       <h2>User info</h2>
       <%= render 'info', user: @user %>
-
     </div>
-    <div class='col-md-8 offset-md-1'>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class='col-md-10 offset-md-1'>
       <h2>Shops</h2>
       <%= render 'shops/index',shops: @shops %>
     </div>
