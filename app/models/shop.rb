@@ -22,7 +22,7 @@ class Shop < ApplicationRecord
     沖縄県: 47
   }
 
-  enum genre: { 深煎り: 1, 浅煎り: 2 }
+  enum genre: { ドリップ: 1, エスプレッソ: 2 }
 
   attachment :image, destroy: false
 
