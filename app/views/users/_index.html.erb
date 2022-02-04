@@ -1,18 +1,12 @@
-<table class='table'>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
-      <tr>
-        <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
-        <td><%= user.name %></td>
-        <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container-user">
+  <% users.each do |user| %>
+    <div class ="user-item">
+
+
+        <div><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no-image-user.jpg", size: "100×100", class:"mb-3 rounded-circle image-user" %></div>
+        <div><%= user.name %></div>
+        <div><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></div>
+
+    </div>
+  <% end %>
+</div>
