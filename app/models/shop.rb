@@ -38,4 +38,17 @@ class Shop < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+
+  def self.search(model, content)
+    if model == 'prefecture'
+      prefecture_id = prefectures.select { |k, _| k.match(/#{content}/) }
+      where(prefecture: prefecture_id.values)
+    elsif model == 'genre'
+      genre_id = genres.select { |k, _| k.match(/#{content}/) }
+      where(genre: genre_id.values)
+    else
+      where('name LIKE ?', "%#{content}%")
+    end
+  end
+
 end
