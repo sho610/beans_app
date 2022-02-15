@@ -51,4 +51,10 @@ class Shop < ApplicationRecord
     end
   end
 
+  def self.most_favorite(n = 3)
+    where(id:
+      Favorite.group(:shop_id).order('count(shop_id) desc').limit(n).pluck(:shop_id)
+    )
+  end
+
 end
